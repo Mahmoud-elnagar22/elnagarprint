@@ -1,0 +1,637 @@
+/* Arabic RTL Order Management System - Custom Styles */
+
+/* Root Variables for Dark Theme */
+:root {
+    --primary-color: #0d6efd;
+    --secondary-color: #6c757d;
+    --success-color: #198754;
+    --warning-color: #ffc107;
+    --danger-color: #dc3545;
+    --info-color: #0dcaf0;
+    --dark-color: #212529;
+    --light-color: #f8f9fa;
+    --bg-dark: #1a1a1a;
+    --bg-dark-alt: #2d2d2d;
+    --border-dark: #404040;
+    --text-light: #ffffff;
+    --text-muted: #6c757d;
+}
+
+/* Global Styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--bg-dark) !important;
+    color: var(--text-light) !important;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+/* Navigation Styles */
+.navbar {
+    background-color: var(--dark-color) !important;
+    border-bottom: 1px solid var(--border-dark) !important;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.navbar-brand {
+    font-weight: bold;
+    font-size: 1.25rem;
+}
+
+.nav-link {
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.nav-link:hover {
+    color: var(--primary-color) !important;
+}
+
+.nav-link.active {
+    color: var(--primary-color) !important;
+    font-weight: bold;
+}
+
+/* Card Styles */
+.card {
+    border: 1px solid var(--border-dark);
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+}
+
+.card:hover {
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+.card-header {
+    background-color: var(--bg-dark-alt);
+    border-bottom: 1px solid var(--border-dark);
+    font-weight: 600;
+}
+
+.card-body {
+    padding: 1.5rem;
+}
+
+/* Button Styles */
+.btn {
+    border-radius: 6px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    border: none;
+}
+
+.btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.btn-outline-light {
+    border: 1px solid var(--border-dark);
+    color: var(--text-light);
+}
+
+.btn-outline-light:hover {
+    background-color: var(--light-color);
+    color: var(--dark-color);
+}
+
+/* Form Styles */
+.form-control, .form-select {
+    background-color: var(--bg-dark-alt);
+    border: 1px solid var(--border-dark);
+    color: var(--text-light);
+    border-radius: 6px;
+    transition: all 0.3s ease;
+}
+
+.form-control:focus, .form-select:focus {
+    background-color: var(--bg-dark-alt);
+    border-color: var(--primary-color);
+    color: var(--text-light);
+    box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
+}
+
+.form-label {
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    color: var(--text-light);
+}
+
+/* Table Styles */
+.table-dark {
+    background-color: var(--bg-dark);
+    border-color: var(--border-dark);
+}
+
+.table-dark thead th {
+    border-color: var(--border-dark);
+    background-color: var(--bg-dark-alt);
+    font-weight: 600;
+}
+
+.table-dark tbody td {
+    border-color: var(--border-dark);
+}
+
+.table-hover tbody tr:hover {
+    background-color: var(--bg-dark-alt);
+}
+
+/* Product Category Colors */
+.category-electronics {
+    border-left: 4px solid var(--info-color);
+}
+
+.category-clothing {
+    border-left: 4px solid var(--success-color);
+}
+
+.category-food {
+    border-left: 4px solid var(--warning-color);
+}
+
+.category-books {
+    border-left: 4px solid var(--danger-color);
+}
+
+.category-home {
+    border-left: 4px solid var(--secondary-color);
+}
+
+/* Modal Styles */
+.modal-content {
+    background-color: var(--bg-dark);
+    border: 1px solid var(--border-dark);
+    border-radius: 8px;
+}
+
+.modal-header {
+    border-bottom: 1px solid var(--border-dark);
+    background-color: var(--bg-dark-alt);
+}
+
+.modal-footer {
+    border-top: 1px solid var(--border-dark);
+    background-color: var(--bg-dark-alt);
+}
+
+.btn-close-white {
+    filter: invert(1) grayscale(100%) brightness(200%);
+}
+
+/* Alert Styles */
+.alert {
+    border: none;
+    border-radius: 6px;
+    font-weight: 500;
+}
+
+.alert-info {
+    background-color: rgba(13, 202, 240, 0.1);
+    color: var(--info-color);
+    border: 1px solid rgba(13, 202, 240, 0.3);
+}
+
+.alert-success {
+    background-color: rgba(25, 135, 84, 0.1);
+    color: var(--success-color);
+    border: 1px solid rgba(25, 135, 84, 0.3);
+}
+
+.alert-warning {
+    background-color: rgba(255, 193, 7, 0.1);
+    color: var(--warning-color);
+    border: 1px solid rgba(255, 193, 7, 0.3);
+}
+
+.alert-danger {
+    background-color: rgba(220, 53, 69, 0.1);
+    color: var(--danger-color);
+    border: 1px solid rgba(220, 53, 69, 0.3);
+}
+
+/* Statistics Card Styles */
+.stats-card {
+    background: linear-gradient(135deg, var(--primary-color), var(--info-color));
+    color: white;
+    border-radius: 10px;
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+    transition: all 0.3s ease;
+}
+
+.stats-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+}
+
+.stats-card h3 {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.stats-card small {
+    opacity: 0.9;
+}
+
+/* Order Status Badges */
+.status-pending {
+    background-color: var(--warning-color);
+    color: white;
+}
+
+.status-ready {
+    background-color: var(--info-color);
+    color: white;
+}
+
+.status-delivered {
+    background-color: var(--success-color);
+    color: white;
+}
+
+.status-cancelled {
+    background-color: var(--danger-color);
+    color: white;
+}
+
+/* Payment Method Badges */
+.payment-cash {
+    background-color: var(--success-color);
+    color: white;
+}
+
+.payment-credit {
+    background-color: var(--warning-color);
+    color: white;
+}
+
+.payment-vodafone {
+    background-color: var(--danger-color);
+    color: white;
+}
+
+/* Customer Type Badges */
+.customer-wholesale {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.customer-retail {
+    background-color: var(--secondary-color);
+    color: white;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container-fluid {
+        padding: 0.5rem;
+    }
+    
+    .card-body {
+        padding: 1rem;
+    }
+    
+    .table-responsive {
+        font-size: 0.875rem;
+    }
+    
+    .btn {
+        padding: 0.5rem 1rem;
+        font-size: 0.875rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .navbar-brand {
+        font-size: 1rem;
+    }
+    
+    .card-title {
+        font-size: 1.1rem;
+    }
+    
+    .stats-card h3 {
+        font-size: 1.5rem;
+    }
+}
+
+/* Print Styles */
+@media print {
+    .navbar, .btn, .modal {
+        display: none !important;
+    }
+    
+    .card {
+        border: 1px solid #000;
+        page-break-inside: avoid;
+    }
+    
+    .table {
+        color: #000;
+    }
+}
+
+/* Loading Spinner */
+.spinner {
+    width: 2rem;
+    height: 2rem;
+    border: 0.25em solid currentColor;
+    border-right-color: transparent;
+    border-radius: 50%;
+    animation: spinner 0.75s linear infinite;
+}
+
+@keyframes spinner {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Notification Styles */
+.notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 1rem;
+    border-radius: 6px;
+    color: white;
+    font-weight: 500;
+    z-index: 1050;
+    opacity: 0;
+    transform: translateX(100%);
+    transition: all 0.3s ease;
+}
+
+.notification.show {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.notification-success {
+    background-color: var(--success-color);
+}
+
+.notification-error {
+    background-color: var(--danger-color);
+}
+
+.notification-warning {
+    background-color: var(--warning-color);
+    color: white;
+}
+
+.notification-info {
+    background-color: var(--info-color);
+    color: white;
+}
+
+/* Editable Cell Styles */
+.editable-cell {
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.editable-cell:hover {
+    background-color: var(--bg-dark-alt);
+    border-radius: 4px;
+}
+
+.editable-cell.editing {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+/* Invoice Styles */
+.invoice-header {
+    text-align: center;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid var(--border-dark);
+}
+
+.invoice-details {
+    margin-bottom: 2rem;
+}
+
+.invoice-items {
+    margin-bottom: 2rem;
+}
+
+.invoice-total {
+    text-align: right;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border-top: 2px solid var(--border-dark);
+    padding-top: 1rem;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-dark);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--border-dark);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--secondary-color);
+}
+
+/* Animation Classes */
+.fade-in {
+    animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.slide-in {
+    animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(-100%);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+
+/* Utility Classes */
+.text-currency {
+    font-family: monospace;
+    font-weight: bold;
+}
+
+.bg-gradient-primary {
+    background: linear-gradient(135deg, var(--primary-color), var(--info-color));
+}
+
+.bg-gradient-success {
+    background: linear-gradient(135deg, var(--success-color), #20c997);
+}
+
+.bg-gradient-warning {
+    background: linear-gradient(135deg, var(--warning-color), #fd7e14);
+}
+
+.bg-gradient-danger {
+    background: linear-gradient(135deg, var(--danger-color), #e83e8c);
+}
+
+.shadow-sm {
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.shadow {
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+.shadow-lg {
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+}
+
+.border-radius-lg {
+    border-radius: 12px;
+}
+
+.border-radius-xl {
+    border-radius: 16px;
+}
+
+/* Form Validation Styles */
+.is-invalid {
+    border-color: var(--danger-color);
+}
+
+.is-valid {
+    border-color: var(--success-color);
+}
+
+.invalid-feedback {
+    color: var(--danger-color);
+    font-size: 0.875rem;
+}
+
+.valid-feedback {
+    color: var(--success-color);
+    font-size: 0.875rem;
+}
+
+/* Dashboard Specific Styles */
+.dashboard-welcome {
+    background: linear-gradient(135deg, var(--primary-color), var(--info-color));
+    color: white;
+    border-radius: 12px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+}
+
+.quick-action-card {
+    transition: all 0.3s ease;
+    border-radius: 8px;
+}
+
+.quick-action-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+/* RTL Specific Adjustments */
+[dir="rtl"] .me-2 {
+    margin-right: 0 !important;
+    margin-left: 0.5rem !important;
+}
+
+[dir="rtl"] .ms-2 {
+    margin-left: 0 !important;
+    margin-right: 0.5rem !important;
+}
+
+[dir="rtl"] .navbar-nav {
+    margin-right: auto !important;
+    margin-left: 0 !important;
+}
+
+/* Dark Mode Enhancements */
+.bg-dark {
+    background-color: var(--bg-dark) !important;
+}
+
+.text-light {
+    color: var(--text-light) !important;
+}
+
+.text-dark {
+    color: var(--text-light) !important;
+}
+
+.text-muted {
+    color: #adb5bd !important;
+}
+
+.border-light {
+    border-color: var(--border-dark) !important;
+}
+
+.border-secondary {
+    border-color: var(--border-dark) !important;
+}
+
+/* Ensure all badge text is white */
+.badge {
+    color: white !important;
+}
+
+/* Ensure all button text is visible */
+.btn-warning {
+    color: white !important;
+}
+
+.btn-info {
+    color: white !important;
+}
+
+/* Category-based Row Colors */
+.table tbody tr.category-row {
+    border-left: 4px solid transparent;
+}
+
+.table tbody tr.category-electronics {
+    border-left-color: var(--info-color);
+}
+
+.table tbody tr.category-clothing {
+    border-left-color: var(--success-color);
+}
+
+.table tbody tr.category-food {
+    border-left-color: var(--warning-color);
+}
+
+.table tbody tr.category-books {
+    border-left-color: var(--danger-color);
+}
+
+.table tbody tr.category-home {
+    border-left-color: var(--secondary-color);
+}
