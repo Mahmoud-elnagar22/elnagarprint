@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الموردين - نظام إدارة الطلبات</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+</head>
+<body class="bg-dark text-light">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark border-bottom border-secondary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index.html">
+                <i class="fas fa-shopping-cart me-2"></i>
+                نظام إدارة الطلبات
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">الرئيسية</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="products.html">المنتجات</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="order-entry.html">إضافة طلب</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="orders.html">الطلبات</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="delivery.html">التسليم</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="clients.html">العملاء</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="suppliers.html">الموردين</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="accounts.html">الحسابات</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid mt-4">
+        <!-- Header -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="card bg-primary text-white">
+                    <div class="card-body">
+                        <h2 class="card-title">
+                            <i class="fas fa-truck me-2"></i>
+                            إدارة الموردين
+                        </h2>
+                        <p class="card-text mb-0">إدارة الموردين وطلبات الشراء</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Statistics -->
+        <div class="row mb-4">
+            <div class="col-md-3 mb-3">
+                <div class="card bg-info text-white">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <i class="fas fa-users me-2"></i>
+                            عدد الموردين
+                        </h5>
+                        <h3 class="card-text" id="suppliersCount">0</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 mb-3">
+                <div class="card bg-success text-white">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <i class="fas fa-check-circle me-2"></i>
+                            طلبات مكتملة
+                        </h5>
+                        <h3 class="card-text" id="completedOrders">0</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 mb-3">
+                <div class="card bg-warning text-dark">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <i class="fas fa-clock me-2"></i>
+                            طلبات معلقة
+                        </h5>
+                        <h3 class="card-text" id="pendingOrders">0</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 mb-3">
+                <div class="card bg-secondary text-white">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <i class="fas fa-coins me-2"></i>
+                            إجمالي الشراء
+                        </h5>
+                        <h3 class="card-text" id="totalPurchases">0 ج.م</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="card bg-dark border-light">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-3 col-sm-6 mb-2">
+                                <button class="btn btn-success w-100" onclick="showAddSupplierModal()">
+                                    <i class="fas fa-plus me-2"></i>
+                                    إضافة مورد
+                                </button>
+                            </div>
+                            <div class="col-md-3 col-sm-6 mb-2">
+                                <button class="btn btn-info w-100" onclick="showPurchaseOrderModal()">
+                                    <i class="fas fa-shopping-cart me-2"></i>
+                                    طلب شراء
+                                </button>
+                            </div>
+                            <div class="col-md-3 col-sm-6 mb-2">
+                                <button class="btn btn-warning w-100" onclick="exportSuppliers()">
+                                    <i class="fas fa-download me-2"></i>
+                                    تصدير الموردين
+                                </button>
+                            </div>
+                            <div class="col-md-3 col-sm-6 mb-2">
+                                <button class="btn btn-outline-light w-100" onclick="refreshSuppliers()">
+                                    <i class="fas fa-sync me-2"></i>
+                                    تحديث
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Suppliers Table -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="card bg-dark border-light">
+                    <div class="card-header">
+                        <h5 class="card-title mb-0">
+                            <i class="fas fa-list me-2"></i>
+                            قائمة الموردين
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-dark table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>اسم المورد</th>
+                                        <th>رقم الهاتف</th>
+                                        <th>العنوان</th>
+                                        <th>إجمالي الطلبات</th>
+                                        <th>آخر طلب</th>
+                                        <th>الإجراءات</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="suppliersTable">
+                                    <tr>
+                                        <td colspan="6" class="text-center text-muted">
+                                            <i class="fas fa-truck me-2"></i>
+                                            لا يوجد موردين مسجلين
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Purchase Orders Table -->
+        <div class="row">
+            <div class="col-12">
+                <div class="card bg-dark border-light">
+                    <div class="card-header">
+                        <h5 class="card-title mb-0">
+                            <i class="fas fa-shopping-cart me-2"></i>
+                            طلبات الشراء
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        <!-- Filter Controls -->
+                        <div class="row mb-3">
+                            <div class="col-md-3 mb-3">
+                                <label class="form-label">المورد</label>
+                                <select class="form-select" id="filterSupplier">
+                                    <option value="">جميع الموردين</option>
+                                </select>
+                            </div>
+                            <div class="col-md-3 mb-3">
+                                <label class="form-label">الحالة</label>
+                                <select class="form-select" id="filterStatus">
+                                    <option value="">جميع الحالات</option>
+                                    <option value="pending">معلق</option>
+                                    <option value="completed">مكتمل</option>
+                                    <option value="cancelled">ملغي</option>
+                                </select>
+                            </div>
+                            <div class="col-md-3 mb-3">
+                                <label class="form-label">من تاريخ</label>
+                                <input type="date" class="form-control" id="filterDateFrom">
+                            </div>
+                            <div class="col-md-3 mb-3">
+                                <label class="form-label">إلى تاريخ</label>
+                                <input type="date" class="form-control" id="filterDateTo">
+                            </div>
+                        </div>
+                        
+                        <div class="table-responsive">
+                            <table class="table table-dark table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>رقم الطلب</th>
+                                        <th>المورد</th>
+                                        <th>تاريخ الطلب</th>
+                                        <th>المنتجات</th>
+                                        <th>الإجمالي</th>
+                                        <th>الحالة</th>
+                                        <th>الإجراءات</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="purchaseOrdersTable">
+                                    <tr>
+                                        <td colspan="7" class="text-center text-muted">
+                                            <i class="fas fa-shopping-cart me-2"></i>
+                                            لا توجد طلبات شراء
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Supplier Modal -->
+    <div class="modal fade" id="addSupplierModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content bg-dark text-light">
+                <div class="modal-header">
+                    <h5 class="modal-title">إضافة مورد جديد</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="addSupplierForm">
+                        <div class="mb-3">
+                            <label class="form-label">اسم المورد</label>
+                            <input type="text" class="form-control" id="supplierName" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">رقم الهاتف</label>
+                            <input type="tel" class="form-control" id="supplierPhone" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">العنوان</label>
+                            <textarea class="form-control" id="supplierAddress" rows="3"></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">البريد الإلكتروني</label>
+                            <input type="email" class="form-control" id="supplierEmail">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">ملاحظات</label>
+                            <textarea class="form-control" id="supplierNotes" rows="3"></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">إلغاء</button>
+                    <button type="button" class="btn btn-success" onclick="saveSupplier()">حفظ المورد</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Purchase Order Modal -->
+    <div class="modal fade" id="purchaseOrderModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content bg-dark text-light">
+                <div class="modal-header">
+                    <h5 class="modal-title">طلب شراء جديد</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="purchaseOrderForm">
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">المورد</label>
+                                <select class="form-select" id="purchaseSupplier" required>
+                                    <option value="">اختر المورد</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">تاريخ الطلب</label>
+                                <input type="date" class="form-control" id="purchaseDate" required>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <h6>المنتجات</h6>
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <select class="form-select" id="purchaseProduct">
+                                        <option value="">اختر المنتج</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-2 mb-3">
+                                    <input type="number" class="form-control" id="purchaseQuantity" placeholder="الكمية" min="1">
+                                </div>
+                                <div class="col-md-2 mb-3">
+                                    <input type="number" class="form-control" id="purchasePrice" placeholder="السعر" step="0.01">
+                                </div>
+                                <div class="col-md-2 mb-3">
+                                    <button type="button" class="btn btn-success w-100" onclick="addPurchaseItem()">
+                                        <i class="fas fa-plus"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <div class="table-responsive">
+                                <table class="table table-dark table-sm">
+                                    <thead>
+                                        <tr>
+                                            <th>المنتج</th>
+                                            <th>الكمية</th>
+                                            <th>السعر</th>
+                                            <th>الإجمالي</th>
+                                            <th>الإجراءات</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="purchaseItems">
+                                        <tr>
+                                            <td colspan="5" class="text-center text-muted">لم يتم إضافة منتجات</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">إجمالي الطلب</label>
+                                <input type="text" class="form-control" id="purchaseTotal" readonly>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">ملاحظات</label>
+                                <textarea class="form-control" id="purchaseNotes" rows="3"></textarea>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">إلغاء</button>
+                    <button type="button" class="btn btn-warning" onclick="savePurchaseOrder('draft')">حفظ مؤقت</button>
+                    <button type="button" class="btn btn-success" onclick="savePurchaseOrder('completed')">تنفيذ فعلي</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/utils.js?v=1.0"></script>
+    <script src="js/database-storage.js?v=1.0"></script>
+    <script src="js/suppliers.js?v=1.0"></script>
+</body>
+</html>

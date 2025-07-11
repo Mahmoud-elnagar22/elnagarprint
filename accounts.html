@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الحسابات - نظام إدارة الطلبات</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+</head>
+<body class="bg-dark text-light">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark border-bottom border-secondary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index.html">
+                <i class="fas fa-shopping-cart me-2"></i>
+                نظام إدارة الطلبات
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">الرئيسية</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="products.html">المنتجات</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="order-entry.html">إضافة طلب</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="orders.html">الطلبات</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="delivery.html">التسليم</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="clients.html">العملاء</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="suppliers.html">الموردين</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="accounts.html">الحسابات</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid mt-4">
+        <!-- Header -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="card bg-primary text-white">
+                    <div class="card-body">
+                        <h2 class="card-title">
+                            <i class="fas fa-calculator me-2"></i>
+                            إدارة الحسابات
+                        </h2>
+                        <p class="card-text mb-0">متابعة الأرصدة والتقارير المالية</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Period Selection -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="card bg-dark border-light">
+                    <div class="card-header">
+                        <h5 class="card-title mb-0">
+                            <i class="fas fa-calendar me-2"></i>
+                            فترة التقرير
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-2 mb-3">
+                                <button class="btn btn-outline-light w-100" onclick="setDateRange('today')">اليوم</button>
+                            </div>
+                            <div class="col-md-2 mb-3">
+                                <button class="btn btn-outline-light w-100" onclick="setDateRange('week')">الأسبوع</button>
+                            </div>
+                            <div class="col-md-2 mb-3">
+                                <button class="btn btn-outline-light w-100" onclick="setDateRange('month')">الشهر</button>
+                            </div>
+                            <div class="col-md-3 mb-3">
+                                <label class="form-label">من تاريخ</label>
+                                <input type="date" class="form-control" id="dateFrom">
+                            </div>
+                            <div class="col-md-3 mb-3">
+                                <label class="form-label">إلى تاريخ</label>
+                                <input type="date" class="form-control" id="dateTo">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Financial Summary -->
+        <div class="row mb-4">
+            <div class="col-md-3 mb-3">
+                <div class="card bg-success text-white">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <i class="fas fa-plus-circle me-2"></i>
+                            إجمالي الإيرادات
+                        </h5>
+                        <h3 class="card-text" id="totalRevenue">0 ج.م</h3>
+                        <small id="revenueDetails">من المبيعات</small>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 mb-3">
+                <div class="card bg-warning text-dark">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <i class="fas fa-clock me-2"></i>
+                            المطلوب تحصيل
+                        </h5>
+                        <h3 class="card-text" id="pendingCollection">0 ج.م</h3>
+                        <small id="pendingDetails">من العملاء</small>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 mb-3">
+                <div class="card bg-danger text-white">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <i class="fas fa-minus-circle me-2"></i>
+                            إجمالي المصروفات
+                        </h5>
+                        <h3 class="card-text" id="totalExpenses">0 ج.م</h3>
+                        <small id="expenseDetails">شراء وتشغيل</small>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 mb-3">
+                <div class="card bg-info text-white">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <i class="fas fa-chart-line me-2"></i>
+                            صافي الربح
+                        </h5>
+                        <h3 class="card-text" id="netProfit">0 ج.م</h3>
+                        <small id="profitMargin">هامش الربح</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Client Credit Summary -->
+        <div class="row mb-4">
+            <div class="col-md-6">
+                <div class="card bg-dark border-light">
+                    <div class="card-header">
+                        <h5 class="card-title mb-0">
+                            <i class="fas fa-user-tie me-2"></i>
+                            أرصدة عملاء الجملة
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="text-center">
+                                    <h4 class="text-warning" id="wholesaleClientsCount">0</h4>
+                                    <small class="text-muted">عميل جملة</small>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="text-center">
+                                    <h4 class="text-danger" id="wholesaleCreditTotal">0 ج.م</h4>
+                                    <small class="text-muted">إجمالي الآجل</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card bg-dark border-light">
+                    <div class="card-header">
+                        <h5 class="card-title mb-0">
+                            <i class="fas fa-user me-2"></i>
+                            أرصدة العملاء القطاعي
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="text-center">
+                                    <h4 class="text-success" id="retailClientsCount">0</h4>
+                                    <small class="text-muted">عميل قطاعي</small>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="text-center">
+                                    <h4 class="text-danger" id="retailCreditTotal">0 ج.م</h4>
+                                    <small class="text-muted">إجمالي الآجل</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Orders Status -->
+        <div class="row mb-4">
+            <div class="col-md-6">
+                <div class="card bg-dark border-light">
+                    <div class="card-header">
+                        <h5 class="card-title mb-0">
+                            <i class="fas fa-truck me-2"></i>
+                            حالة الطلبات
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="text-center">
+                                    <h4 class="text-info" id="readyOrdersCount">0</h4>
+                                    <small class="text-muted">جاهزة للتسليم</small>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="text-center">
+                                    <h4 class="text-warning" id="readyOrdersValue">0 ج.م</h4>
+                                    <small class="text-muted">قيمة الطلبات</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card bg-dark border-light">
+                    <div class="card-header">
+                        <h5 class="card-title mb-0">
+                            <i class="fas fa-cog me-2"></i>
+                            طلبات قيد التجهيز
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="text-center">
+                                    <h4 class="text-secondary" id="pendingOrdersCount">0</h4>
+                                    <small class="text-muted">طلب معلق</small>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="text-center">
+                                    <h4 class="text-secondary" id="pendingOrdersValue">0 ج.م</h4>
+                                    <small class="text-muted">قيمة الطلبات</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Expenses Management -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="card bg-dark border-light">
+                    <div class="card-header">
+                        <h5 class="card-title mb-0">
+                            <i class="fas fa-receipt me-2"></i>
+                            إدارة المصروفات
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="row mb-3">
+                            <div class="col-md-3 mb-3">
+                                <button class="btn btn-success w-100" onclick="showAddExpenseModal()">
+                                    <i class="fas fa-plus me-2"></i>
+                                    إضافة مصروف
+                                </button>
+                            </div>
+                            <div class="col-md-3 mb-3">
+                                <button class="btn btn-info w-100" onclick="showReminderModal()">
+                                    <i class="fas fa-bell me-2"></i>
+                                    تذكير استحقاق
+                                </button>
+                            </div>
+                            <div class="col-md-3 mb-3">
+                                <button class="btn btn-warning w-100" onclick="exportExpenses()">
+                                    <i class="fas fa-download me-2"></i>
+                                    تصدير المصروفات
+                                </button>
+                            </div>
+                            <div class="col-md-3 mb-3">
+                                <button class="btn btn-outline-light w-100" onclick="refreshExpenses()">
+                                    <i class="fas fa-sync me-2"></i>
+                                    تحديث
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="table-responsive">
+                            <table class="table table-dark table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>التاريخ</th>
+                                        <th>الوصف</th>
+                                        <th>الفئة</th>
+                                        <th>المبلغ</th>
+                                        <th>طريقة الدفع</th>
+                                        <th>الإجراءات</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="expensesTable">
+                                    <tr>
+                                        <td colspan="6" class="text-center text-muted">
+                                            <i class="fas fa-receipt me-2"></i>
+                                            لا توجد مصروفات مسجلة
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Savings Cards -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="card bg-dark border-light">
+                    <div class="card-header">
+                        <h5 class="card-title mb-0">
+                            <i class="fas fa-piggy-bank me-2"></i>
+                            كروت الادخار
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="row mb-3">
+                            <div class="col-md-3 mb-3">
+                                <button class="btn btn-success w-100" onclick="showSavingsModal()">
+                                    <i class="fas fa-plus me-2"></i>
+                                    إضافة كرت ادخار
+                                </button>
+                            </div>
+                            <div class="col-md-3 mb-3">
+                                <div class="card bg-primary text-white">
+                                    <div class="card-body text-center">
+                                        <h6>الجمعية</h6>
+                                        <h4 id="jamiaTotal">0 ج.م</h4>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3 mb-3">
+                                <div class="card bg-success text-white">
+                                    <div class="card-body text-center">
+                                        <h6>الأقساط</h6>
+                                        <h4 id="installmentsTotal">0 ج.م</h4>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3 mb-3">
+                                <div class="card bg-info text-white">
+                                    <div class="card-body text-center">
+                                        <h6>الدفعات</h6>
+                                        <h4 id="paymentsTotal">0 ج.م</h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="table-responsive">
+                            <table class="table table-dark table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>الاسم</th>
+                                        <th>النوع</th>
+                                        <th>المبلغ</th>
+                                        <th>تاريخ الإنشاء</th>
+                                        <th>الحالة</th>
+                                        <th>الإجراءات</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="savingsTable">
+                                    <tr>
+                                        <td colspan="6" class="text-center text-muted">
+                                            <i class="fas fa-piggy-bank me-2"></i>
+                                            لا توجد كروت ادخار
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Date Review -->
+        <div class="row">
+            <div class="col-12">
+                <div class="card bg-dark border-light">
+                    <div class="card-header">
+                        <h5 class="card-title mb-0">
+                            <i class="fas fa-calendar-check me-2"></i>
+                            مراجعة حسابات التواريخ
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h6>الطلبات المستحقة التسليم</h6>
+                                <div id="overdueOrders" class="alert alert-warning">
+                                    <i class="fas fa-exclamation-triangle me-2"></i>
+                                    لا توجد طلبات متأخرة
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <h6>التذكيرات المستحقة</h6>
+                                <div id="dueReminders" class="alert alert-info">
+                                    <i class="fas fa-bell me-2"></i>
+                                    لا توجد تذكيرات مستحقة
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Expense Modal -->
+    <div class="modal fade" id="addExpenseModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content bg-dark text-light">
+                <div class="modal-header">
+                    <h5 class="modal-title">إضافة مصروف جديد</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="expenseForm">
+                        <div class="mb-3">
+                            <label class="form-label">الوصف</label>
+                            <input type="text" class="form-control" id="expenseDescription" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">الفئة</label>
+                            <select class="form-select" id="expenseCategory" required>
+                                <option value="">اختر الفئة</option>
+                                <option value="مشتريات">مشتريات</option>
+                                <option value="إيجار">إيجار</option>
+                                <option value="كهرباء">كهرباء</option>
+                                <option value="مياه">مياه</option>
+                                <option value="رواتب">رواتب</option>
+                                <option value="مواصلات">مواصلات</option>
+                                <option value="صيانة">صيانة</option>
+                                <option value="أخرى">أخرى</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">المبلغ</label>
+                            <input type="number" class="form-control" id="expenseAmount" step="0.01" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">التاريخ</label>
+                            <input type="date" class="form-control" id="expenseDate" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">طريقة الدفع</label>
+                            <select class="form-select" id="expensePaymentMethod" required>
+                                <option value="">اختر طريقة الدفع</option>
+                                <option value="نقدي">نقدي</option>
+                                <option value="بنكي">بنكي</option>
+                                <option value="فودافون كاش">فودافون كاش</option>
+                                <option value="آجل">آجل</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">ملاحظات</label>
+                            <textarea class="form-control" id="expenseNotes" rows="3"></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">إلغاء</button>
+                    <button type="button" class="btn btn-success" onclick="saveExpense()">حفظ المصروف</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Savings Modal -->
+    <div class="modal fade" id="savingsModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content bg-dark text-light">
+                <div class="modal-header">
+                    <h5 class="modal-title">إضافة كرت ادخار</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="savingsForm">
+                        <div class="mb-3">
+                            <label class="form-label">اسم الكرت</label>
+                            <input type="text" class="form-control" id="savingsName" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">نوع الكرت</label>
+                            <select class="form-select" id="savingsType" required>
+                                <option value="">اختر النوع</option>
+                                <option value="جمعية">جمعية</option>
+                                <option value="قسط">قسط</option>
+                                <option value="دفعة">دفعة</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">المبلغ</label>
+                            <input type="number" class="form-control" id="savingsAmount" step="0.01" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">تاريخ الإنشاء</label>
+                            <input type="date" class="form-control" id="savingsDate" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">وصف</label>
+                            <textarea class="form-control" id="savingsDescription" rows="3"></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">إلغاء</button>
+                    <button type="button" class="btn btn-success" onclick="saveSavings()">حفظ الكرت</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Reminder Modal -->
+    <div class="modal fade" id="reminderModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content bg-dark text-light">
+                <div class="modal-header">
+                    <h5 class="modal-title">إضافة تذكير</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="reminderForm">
+                        <div class="mb-3">
+                            <label class="form-label">عنوان التذكير</label>
+                            <input type="text" class="form-control" id="reminderTitle" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">تاريخ الاستحقاق</label>
+                            <input type="date" class="form-control" id="reminderDate" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">النوع</label>
+                            <select class="form-select" id="reminderType" required>
+                                <option value="">اختر النوع</option>
+                                <option value="دفع">دفع</option>
+                                <option value="تحصيل">تحصيل</option>
+                                <option value="استحقاق">استحقاق</option>
+                                <option value="متابعة">متابعة</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">الوصف</label>
+                            <textarea class="form-control" id="reminderDescription" rows="3"></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">إلغاء</button>
+                    <button type="button" class="btn btn-success" onclick="saveReminder()">حفظ التذكير</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/utils.js?v=1.0"></script>
+    <script src="js/database-storage.js?v=1.0"></script>
+    <script src="js/accounts.js?v=1.0"></script>
+</body>
+</html>

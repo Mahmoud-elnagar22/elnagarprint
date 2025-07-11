@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إدارة المنتجات - نظام إدارة الطلبات</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+</head>
+<body class="bg-dark text-light">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark border-bottom border-secondary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index.html">
+                <i class="fas fa-shopping-cart me-2"></i>
+                نظام إدارة الطلبات
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">الرئيسية</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="products.html">المنتجات</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="order-entry.html">إضافة طلب</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="orders.html">الطلبات</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="delivery.html">التسليم</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="clients.html">العملاء</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="suppliers.html">الموردين</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="accounts.html">الحسابات</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid mt-4">
+        <!-- Header -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="card bg-primary text-white">
+                    <div class="card-body">
+                        <h2 class="card-title">
+                            <i class="fas fa-box me-2"></i>
+                            إدارة المنتجات
+                        </h2>
+                        <p class="card-text mb-0">إضافة وتعديل المنتجات وإدارة التصنيفات</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="card bg-dark border-light">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-2 col-sm-6 mb-2">
+                                <button class="btn btn-success w-100" onclick="addNewCategory()">
+                                    <i class="fas fa-plus me-2"></i>
+                                    تصنيف جديد
+                                </button>
+                            </div>
+                            <div class="col-md-2 col-sm-6 mb-2">
+                                <button class="btn btn-info w-100" onclick="exportProducts()">
+                                    <i class="fas fa-download me-2"></i>
+                                    تصدير CSV
+                                </button>
+                            </div>
+                            <div class="col-md-2 col-sm-6 mb-2">
+                                <input type="file" id="importFile" class="form-control" accept=".csv" style="display: none;">
+                                <button class="btn btn-warning w-100" onclick="document.getElementById('importFile').click()">
+                                    <i class="fas fa-upload me-2"></i>
+                                    استيراد CSV
+                                </button>
+                            </div>
+                            <div class="col-md-2 col-sm-6 mb-2">
+                                <button class="btn btn-secondary w-100" onclick="exportExcel()">
+                                    <i class="fas fa-file-excel me-2"></i>
+                                    تصدير Excel
+                                </button>
+                            </div>
+                            <div class="col-md-2 col-sm-6 mb-2">
+                                <input type="file" id="excelFile" class="form-control" accept=".xlsx,.xls" style="display: none;">
+                                <button class="btn btn-outline-secondary w-100" onclick="document.getElementById('excelFile').click()">
+                                    <i class="fas fa-file-excel me-2"></i>
+                                    استيراد Excel
+                                </button>
+                            </div>
+                            <div class="col-md-2 col-sm-6 mb-2">
+                                <button class="btn btn-outline-info w-100" onclick="downloadExcelTemplate()">
+                                    <i class="fas fa-download me-2"></i>
+                                    نموذج Excel
+                                </button>
+                            </div>
+                            <div class="col-md-2 col-sm-6 mb-2">
+                                <button class="btn btn-outline-warning w-100" onclick="exportAllData()">
+                                    <i class="fas fa-database me-2"></i>
+                                    نسخ احتياطي
+                                </button>
+                            </div>
+                            <div class="col-md-2 col-sm-6 mb-2">
+                                <input type="file" id="backupFile" class="form-control" accept=".json" style="display: none;">
+                                <button class="btn btn-outline-success w-100" onclick="document.getElementById('backupFile').click()">
+                                    <i class="fas fa-upload me-2"></i>
+                                    استعادة البيانات
+                                </button>
+                            </div>
+                            <div class="col-md-2 col-sm-6 mb-2">
+                                <button class="btn btn-outline-primary w-100" onclick="migrateToDatabase()">
+                                    <i class="fas fa-cloud-upload me-2"></i>
+                                    نقل البيانات
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Add Product Form -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="card bg-dark border-light">
+                    <div class="card-header">
+                        <h5 class="card-title mb-0">
+                            <i class="fas fa-plus me-2"></i>
+                            إضافة منتج جديد
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        <form id="productForm">
+                            <div class="row">
+                                <div class="col-md-3 mb-3">
+                                    <label class="form-label">اسم المنتج</label>
+                                    <input type="text" class="form-control" id="productName" required>
+                                </div>
+                                <div class="col-md-2 mb-3">
+                                    <label class="form-label">التصنيف</label>
+                                    <select class="form-select" id="productCategory" required>
+                                        <option value="">اختر التصنيف</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-2 mb-3">
+                                    <label class="form-label">سعر التكلفة</label>
+                                    <input type="number" class="form-control" id="costPrice" step="0.01" required>
+                                </div>
+                                <div class="col-md-2 mb-3">
+                                    <label class="form-label">سعر الجملة</label>
+                                    <input type="number" class="form-control" id="wholesalePrice" step="0.01" required>
+                                </div>
+                                <div class="col-md-2 mb-3">
+                                    <label class="form-label">سعر القطاعي</label>
+                                    <input type="number" class="form-control" id="retailPrice" step="0.01" required>
+                                </div>
+                                <div class="col-md-1 mb-3">
+                                    <label class="form-label">الكمية</label>
+                                    <input type="number" class="form-control" id="productQuantity" value="0" min="0">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3 mb-3">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="infiniteStock">
+                                        <label class="form-check-label" for="infiniteStock">
+                                            لا ينفد (مخزون لا نهائي)
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 mb-3">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="isManufactured">
+                                        <label class="form-check-label" for="isManufactured">
+                                            منتج مصنع من خامات
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <button type="submit" class="btn btn-success">
+                                        <i class="fas fa-plus me-2"></i>
+                                        إضافة المنتج
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Filters -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="card bg-dark border-light">
+                    <div class="card-header">
+                        <h5 class="card-title mb-0">
+                            <i class="fas fa-filter me-2"></i>
+                            فلاتر البحث
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-3 mb-3">
+                                <label class="form-label">البحث في الأسماء</label>
+                                <input type="text" class="form-control" id="searchName" placeholder="ابحث عن منتج...">
+                            </div>
+                            <div class="col-md-3 mb-3">
+                                <label class="form-label">فلتر التصنيف</label>
+                                <select class="form-select" id="filterCategory">
+                                    <option value="">جميع التصنيفات</option>
+                                </select>
+                            </div>
+                            <div class="col-md-3 mb-3">
+                                <label class="form-label">فلتر السعر</label>
+                                <select class="form-select" id="filterPrice">
+                                    <option value="">جميع الأسعار</option>
+                                    <option value="wholesale">أسعار الجملة</option>
+                                    <option value="retail">أسعار القطاعي</option>
+                                </select>
+                            </div>
+                            <div class="col-md-3 mb-3">
+                                <label class="form-label">&nbsp;</label>
+                                <button class="btn btn-secondary w-100" onclick="clearFilters()">
+                                    <i class="fas fa-times me-2"></i>
+                                    مسح الفلاتر
+                                </button>
+                            </div>
+                            <div class="col-md-3 mb-3">
+                                <label class="form-label">بحث بالاسم</label>
+                                <input type="text" class="form-control" id="searchName" placeholder="ابحث عن المنتج...">
+                            </div>
+                            <div class="col-md-3 mb-3">
+                                <label class="form-label">&nbsp;</label>
+                                <button class="btn btn-outline-light w-100" onclick="clearFilters()">
+                                    <i class="fas fa-times me-2"></i>
+                                    مسح الفلاتر
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Categories Management -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="card bg-dark border-light">
+                    <div class="card-header">
+                        <h5 class="card-title mb-0">
+                            <i class="fas fa-tags me-2"></i>
+                            إدارة التصنيفات
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        <div id="categoriesList" class="d-flex flex-wrap gap-2">
+                            <span class="text-muted">لا توجد تصنيفات مضافة بعد</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Products Table -->
+        <div class="row">
+            <div class="col-12">
+                <div class="card bg-dark border-light">
+                    <div class="card-header">
+                        <h5 class="card-title mb-0">
+                            <i class="fas fa-list me-2"></i>
+                            قائمة المنتجات
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-dark table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>اسم المنتج</th>
+                                        <th>التصنيف</th>
+                                        <th>تكلفة</th>
+                                        <th>جملة</th>
+                                        <th>قطاعي</th>
+                                        <th>الكمية</th>
+                                        <th>الحالة</th>
+                                        <th>الإجراءات</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="productsTable">
+                                    <tr>
+                                        <td colspan="8" class="text-center text-muted">
+                                            <i class="fas fa-box me-2"></i>
+                                            لا توجد منتجات مضافة بعد
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Category Modal -->
+    <div class="modal fade" id="categoryModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content bg-dark text-light">
+                <div class="modal-header">
+                    <h5 class="modal-title">إضافة تصنيف جديد</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="categoryForm">
+                        <div class="mb-3">
+                            <label class="form-label">اسم التصنيف</label>
+                            <input type="text" class="form-control" id="categoryName" required>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">إلغاء</button>
+                    <button type="button" class="btn btn-success" onclick="saveCategory()">حفظ التصنيف</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    <script src="js/utils.js?v=1.0"></script>
+    <script src="js/database-storage.js?v=1.0"></script>
+    <script src="js/products.js?v=1.0"></script>
+</body>
+</html>

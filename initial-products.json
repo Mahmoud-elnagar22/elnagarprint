@@ -1,0 +1,242 @@
+[
+  {
+    "name": "تابلو 10x15 ",
+    "category": "تابلوهات",
+    "costPrice": 15,
+    "wholesalePrice": 30,
+    "retailPrice": 40,
+    "quantity": 3,
+    "infiniteStock": false,
+    "isManufactured": true
+  },
+  {
+    "name": "تابلو 15x21",
+    "category": "تابلوهات",
+    "costPrice": 15,
+    "wholesalePrice": 40,
+    "retailPrice": 50,
+    "quantity": 3,
+    "infiniteStock": false,
+    "isManufactured": true
+  },
+  {
+    "name": "تابلو 20x30",
+    "category": "تابلوهات",
+    "costPrice": 20,
+    "wholesalePrice": 65,
+    "retailPrice": 70,
+    "quantity": 3,
+    "infiniteStock": false,
+    "isManufactured": true
+  },
+  {
+    "name": "تابلو 30x40",
+    "category": "تابلوهات",
+    "costPrice": 30,
+    "wholesalePrice": 100,
+    "retailPrice": 130,
+    "quantity": 3,
+    "infiniteStock": false,
+    "isManufactured": true
+  },
+  {
+    "name": "تابلو 40x50",
+    "category": "تابلوهات",
+    "costPrice": 120,
+    "wholesalePrice": 160,
+    "retailPrice": 230,
+    "quantity": 3,
+    "infiniteStock": false,
+    "isManufactured": true
+  },
+  {
+    "name": "تابلو 60x50",
+    "category": "تابلوهات",
+    "costPrice": 150,
+    "wholesalePrice": 230,
+    "retailPrice": 270,
+    "quantity": 3,
+    "infiniteStock": false,
+    "isManufactured": true
+  },
+  {
+    "name": "تابلو 60x70",
+    "category": "تابلوهات",
+    "costPrice": 200,
+    "wholesalePrice": 300,
+    "retailPrice": 360,
+    "quantity": 3,
+    "infiniteStock": false,
+    "isManufactured": true
+  },
+  {
+    "name": "مج عادي",
+    "category": "مجات",
+    "costPrice": 50,
+    "wholesalePrice": 85,
+    "retailPrice": 100,
+    "quantity": 3,
+    "infiniteStock": false,
+    "isManufactured": true
+  },
+  {
+    "name": "مج سحري",
+    "category": "مجات",
+    "costPrice": 85,
+    "wholesalePrice": 110,
+    "retailPrice": 140,
+    "quantity": 3,
+    "infiniteStock": false,
+    "isManufactured": true
+  },
+  {
+    "name": "مج ديجيتال",
+    "category": "مجات",
+    "costPrice": 90,
+    "wholesalePrice": 140,
+    "retailPrice": 150,
+    "quantity": 3,
+    "infiniteStock": false,
+    "isManufactured": true
+  },
+  {
+    "name": "مج بيركس بجلد",
+    "category": "مجات",
+    "costPrice": 50,
+    "wholesalePrice": 85,
+    "retailPrice": 100,
+    "quantity": 3,
+    "infiniteStock": false,
+    "isManufactured": true
+  },
+  {
+    "name": "محافظ",
+    "category": "اكسسوارات ",
+    "costPrice": 70,
+    "wholesalePrice": 130,
+    "retailPrice": 150,
+    "quantity": 3,
+    "infiniteStock": false,
+    "isManufactured": true
+  },
+  {
+    "name": "قلم مضيء",
+    "category": "اكسسوارات ",
+    "costPrice": 21,
+    "wholesalePrice": 40,
+    "retailPrice": 50,
+    "quantity": 3,
+    "infiniteStock": false,
+    "isManufactured": true
+  },
+  {
+    "name": "انسيال عيون",
+    "category": "اكسسوارات ",
+    "costPrice": 50,
+    "wholesalePrice": 85,
+    "retailPrice": 100,
+    "quantity": 3,
+    "infiniteStock": false,
+    "isManufactured": true
+  },
+  {
+    "name": "سلسله عيون",
+    "category": "اكسسوارات ",
+    "costPrice": 50,
+    "wholesalePrice": 85,
+    "retailPrice": 100,
+    "quantity": 3,
+    "infiniteStock": false,
+    "isManufactured": true
+  },
+  {
+    "name": "ميداليه خشب طباعه",
+    "category": "اكسسوارات ",
+    "costPrice": 5,
+    "wholesalePrice": 5,
+    "retailPrice": 5,
+    "quantity": 3,
+    "infiniteStock": false,
+    "isManufactured": true
+  },
+  {
+    "name": "ميداليه خشب طباعه وشين",
+    "category": "اكسسوارات ",
+    "costPrice": 5,
+    "wholesalePrice": 10,
+    "retailPrice": 10,
+    "quantity": 3,
+    "infiniteStock": false,
+    "isManufactured": true
+  },
+  {
+    "name": "ميداليه خشب حفر",
+    "category": "اكسسوارات ",
+    "costPrice": 5,
+    "wholesalePrice": 7,
+    "retailPrice": 10,
+    "quantity": 3,
+    "infiniteStock": false,
+    "isManufactured": true
+  },
+  {
+    "name": "ميداليه خشب حفر وشين",
+    "category": "اكسسوارات ",
+    "costPrice": 5,
+    "wholesalePrice": 15,
+    "retailPrice": 15,
+    "quantity": 3,
+    "infiniteStock": false,
+    "isManufactured": true
+  },
+  {
+    "name": "ساعة 30x40",
+    "category": "اكسسوارات ",
+    "costPrice": 130,
+    "wholesalePrice": 160,
+    "retailPrice": 200,
+    "quantity": 3,
+    "infiniteStock": false,
+    "isManufactured": true
+  },
+  {
+    "name": "ساعة 20x30",
+    "category": "اكسسوارات ",
+    "costPrice": 80,
+    "wholesalePrice": 120,
+    "retailPrice": 130,
+    "quantity": 3,
+    "infiniteStock": false,
+    "isManufactured": true
+  },
+  {
+    "name": "عرض المحفظه بالبوكس",
+    "category": "عروض",
+    "costPrice": 150,
+    "wholesalePrice": 180,
+    "retailPrice": 200,
+    "quantity": 3,
+    "infiniteStock": false,
+    "isManufactured": true
+  },
+  {
+    "name": "مراية سحريه دايره",
+    "category": "اكسسوارات ",
+    "costPrice": 110,
+    "wholesalePrice": 160,
+    "retailPrice": 230,
+    "quantity": 3,
+    "infiniteStock": false,
+    "isManufactured": true
+  },
+  {
+    "name": "مراية سحريه قلب ",
+    "category": "اكسسوارات ",
+    "costPrice": 110,
+    "wholesalePrice": 160,
+    "retailPrice": 230,
+    "quantity": 3,
+    "infiniteStock": false,
+    "isManufactured": true
+  }
+]
